@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CODA</string>
+    <string name="app_desc">A New Way to Discharge</string>
+    <string name="white">CODA White Symbol</string>
+    <string name="patient_name">John Doe</string>
+    <string name="search">Search</string>
+    <string name="patient_info">Patient Information</string>
+    <string name="problem_list">Problem List</string>
+    <string name="medications">Medications</string>
+    <string name="appointment_schedule">Appointment Schedule</string>
+    <string name="what_to_watch_for">What to Watch For</string>
+    <string name="contact_team">Contact On-Call Team</string>
+    <string name="discharge_summary">Discharge Summary</string>
 </resources>
