@@ -20,7 +20,11 @@ android {
 
 dependencies {
 <<<<<<< HEAD
+<<<<<<< HEAD
     implementation fileTree(dir: 'libs', include: ['*.jar'], )
+=======
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+>>>>>>> parent of 2468a85... Testing out pdf to text scraper
 =======
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 >>>>>>> parent of 2468a85... Testing out pdf to text scraper
