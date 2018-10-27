@@ -61,7 +61,8 @@ public class HomeActivity extends AppCompatActivity {
         medicationList.add("Medication 4");
 
         List<String> appointment = new ArrayList<>();
-        appointment.add("Date of future Appointments: DD/MM/YYYY");
+        appointment.add("Date of future Appointments:" +
+                "\nDD/MM/YYYY -- Reason for visit\nDD/MM/YYYY -- Reason for visit");
 
         List<String> watchFor = new ArrayList<>();
         watchFor.add("insert info here later...");
