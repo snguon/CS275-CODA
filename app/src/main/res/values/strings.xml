@@ -11,4 +11,9 @@
     <string name="what_to_watch_for">What to Watch For</string>
     <string name="contact_team">Contact On-Call Team</string>
     <string name="discharge_summary">Discharge Summary</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="info">No of attempts remaining: 5</string>
 </resources>
