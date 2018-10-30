@@ -1,6 +1,7 @@
 package com.devteam.coda.coda;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +13,15 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText username;
+    private static EditText username;
     private EditText password;
     private Button bLogin;
     private TextView info;
     private int counter = 5;
+
+    public static String getUsername() {
+        return username.getText().toString();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

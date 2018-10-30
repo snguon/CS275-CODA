@@ -1,10 +1,12 @@
 package com.devteam.coda.coda;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     private ExpandableListAdapted listAdapter;
     private List<String> listDataHeader;
     private HashMap<String,List<String>> listHash;
+    private TextView patient_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,9 @@ public class HomeActivity extends AppCompatActivity {
         initData();
         listAdapter = new ExpandableListAdapted(this,listDataHeader,listHash);
         listView.setAdapter(listAdapter);
+
+        patient_name = (TextView)findViewById(R.id.text_patient);
+        patient_name.setText(LoginActivity.getUsername());
     }
 
     private void initData() {
