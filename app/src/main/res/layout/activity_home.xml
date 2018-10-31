@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#64A7DE"
+    android:background="@color/background"
     tools:context=".HomeActivity">
 
 
@@ -14,8 +14,8 @@
         android:layout_height="385dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#64A7DE"
-        android:textColor="#233441"
+        android:background="@color/background"
+        android:textColor="@color/textColor"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button_search"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,9 +67,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#233441"
+        android:background="@color/textColor"
         android:text="@string/search"
-        android:textColor="#64A7DE"
+        android:textColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
