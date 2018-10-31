@@ -32,10 +32,11 @@ include "top.php";
             <label for="passwordField">Your password</label>
           </div>
           <div class="text-center mt-4">
-            <button class="btn btn-indigo">Sign up</button>
+            <button class="btn btn-indigo" name = "buttonSignUp" id="buttonSignUp">Sign up</button>
             <hr class="hr-light mb-3 mt-4">
             <div class="inline-ul text-center d-flex justify-content-center">
-              <?php $newUserdata = array()?>
+              <?php if (isset($_POST['buttonSignUp'])){?>
+             <?php $newUserdata = array()?>
               <?php $nameValue = htmlspecialchars($_POST['nameField'])?>
               <?php $emailValue = htmlspecialchars($_POST['emailField'])?>
               <?php $passValue = htmlspecialchars($_POST['passwordField'])?>
@@ -48,8 +49,9 @@ include "top.php";
               <?php $newUserdata[] = $nameValue ?>
               <?php $newUserdata[] = $emailValue ?>
               <?php $newUserdata[] = $passHashed ?>
-              <?php $records = $thisDatabaseWriter->insert($query, $newUserdata, 0, 0, 0, 0, false, false)?>
-              
+              <?php if ($nameValue != "" or $emailValue != ""){$records = $thisDatabaseWriter->insert($query, $newUserdata, 0, 0, 0, 0, false, false)?>
+              <?php }?>
+             <?php }?>
             </a>
           </div>
         </div>
