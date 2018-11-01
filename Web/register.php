@@ -36,28 +36,33 @@ include "top.php";
             <hr class="hr-light mb-3 mt-4">
             <div class="inline-ul text-center d-flex justify-content-center">
               <?php if (isset($_POST['buttonSignUp'])){?>
-             <?php $newUserdata = array()?>
-              <?php $nameValue = htmlspecialchars($_POST['nameField'])?>
-              <?php $emailValue = htmlspecialchars($_POST['emailField'])?>
-              <?php $passValue = htmlspecialchars($_POST['passwordField'])?>
-              <?php $passHashed = password_hash($passValue,PASSWORD_DEFAULT) ?>
-              <?php $query = 'INSERT INTO tblUsers SET '?>
-              <?php $query .= 'fldUsername = ?, '?>
-              <?php $query .= 'fldEmail = ?, '?>
-              <?php    $query .= 'fldPassword = ?'?>
+               <?php $newUserdata = array()?>
+               <?php $nameValue = htmlspecialchars($_POST['nameField'])?>
+               <?php $emailValue = htmlspecialchars($_POST['emailField'])?>
+               <?php $emailValue = strtolower($emailValue) ?>
+               <?php $passValue = htmlspecialchars($_POST['passwordField'])?>
 
-              <?php $newUserdata[] = $nameValue ?>
-              <?php $newUserdata[] = $emailValue ?>
-              <?php $newUserdata[] = $passHashed ?>
-              <?php if ($nameValue != "" or $emailValue != ""){$records = $thisDatabaseWriter->insert($query, $newUserdata, 0, 0, 0, 0, false, false)?>
+               <?php $passHashed = password_hash($passValue,PASSWORD_DEFAULT) ?>
+
+               <?php $query = 'INSERT INTO tblUsers SET '?>
+               <?php $query .= 'fldUsername = ?, '?>
+               <?php $query .= 'fldEmail = ?, '?>
+               <?php    $query .= 'fldPassword = ?'?>
+
+               <?php $newUserdata[] = $nameValue ?>
+               <?php $newUserdata[] = $emailValue ?>
+               <?php $newUserdata[] = $passHashed ?>
+               <?php if ($nameValue != "" AND $emailValue != "" AND $emailValue != ""){$records = $thisDatabaseWriter->insert($query, $newUserdata, 0, 0, 0, 0, false, false)?>
+                <h1>Congrats, your registration has been confirmed! Thank you!!</h1>
               <?php }?>
-             <?php }?>
-            </a>
-          </div>
+            <?php }?>
+
+          </a>
         </div>
       </div>
-
     </div>
-  </form>
 
-  <!--/.Form-->
+  </div>
+</form>
+
+<!--/.Form-->
