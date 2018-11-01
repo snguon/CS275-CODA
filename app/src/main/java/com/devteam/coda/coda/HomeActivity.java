@@ -1,10 +1,16 @@
 package com.devteam.coda.coda;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -12,83 +18,52 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+    private CardView medCard,problemCard, apptCard, watchCard, callCard, summaryCard;
+    private MenuItem myActionMenuItem;
+    private EditText myActionEditText;
 
-    private ExpandableListView listView;
-    private ExpandableListAdapted listAdapter;
-    private List<String> listDataHeader;
-    private HashMap<String,List<String>> listHash;
-    private TextView patient_name;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().hide();
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        listView = (ExpandableListView) findViewById(R.id.lvExp);
-        initData();
-        listAdapter = new ExpandableListAdapted(this,listDataHeader,listHash);
-        listView.setAdapter(listAdapter);
 
-        patient_name = (TextView)findViewById(R.id.text_patient);
-        patient_name.setText(LoginActivity.getUsername());
+        //define the different cards
+        medCard = (CardView) findViewById(R.id.meds_card);
+        problemCard = (CardView) findViewById(R.id.problems_card);
+        apptCard = (CardView) findViewById(R.id.appointment_card);
+        watchCard = (CardView) findViewById(R.id.watch_card);
+        callCard = (CardView) findViewById(R.id.call_card);
+        summaryCard = (CardView) findViewById(R.id.summary_card);
+        //Add click listener to the cards
+        medCard.setOnClickListener(this);
+        problemCard.setOnClickListener(this);
+        apptCard.setOnClickListener(this);
+        watchCard.setOnClickListener(this);
+        callCard.setOnClickListener(this);
+        summaryCard.setOnClickListener(this);
     }
 
-    private void initData() {
-        listDataHeader = new ArrayList<>();
-        listHash = new HashMap<>();
+    @Override
+    public void onClick(View v) {
+        Intent i;
 
-        listDataHeader.add("Patient Information");
-        listDataHeader.add("Problem List");
-        listDataHeader.add("Medications");
-        listDataHeader.add("Appointment Schedule");
-        listDataHeader.add("What to Watch For");
-        listDataHeader.add("Contact On-Call Team");
-        listDataHeader.add("Discharge Summary");
+        switch(v.getId()){
+            case R.id.meds_card: i = new Intent(this,MedicationActivity.class);startActivity(i); break;
+            case R.id.problems_card: i = new Intent(this,ProblemsActivity.class);startActivity(i); break;
+            case R.id.appointment_card: i = new Intent(this,AppointmentActivity.class);startActivity(i); break;
+            case R.id.watch_card: i = new Intent(this,WatchActivity.class);startActivity(i); break;
+            case R.id.call_card: i = new Intent(this,CallActivity.class);startActivity(i); break;
+            case R.id.summary_card: i = new Intent(this,SummaryActivity.class);startActivity(i); break;
+            default:break;
+        }
 
-
-        List<String> patientinf = new ArrayList<>();
-        patientinf.add("Insert Patient info here");
-        patientinf.add("Patient Name: " + getText(R.string.patient_name));
-
-        List<String> problemList = new ArrayList<>();
-        problemList.add("Problem 1");
-        problemList.add("Problem 2");
-        problemList.add("Problem 3");
-        problemList.add("Problem 4");
-
-        List<String> medicationList = new ArrayList<>();
-        medicationList.add("Medication 1");
-        medicationList.add("Medication 2");
-        medicationList.add("Medication 3");
-        medicationList.add("Medication 4");
-
-        List<String> appointment = new ArrayList<>();
-        appointment.add("Date of future Appointments:" +
-                "\nDD/MM/YYYY -- Reason for visit\nDD/MM/YYYY -- Reason for visit");
-
-        List<String> watchFor = new ArrayList<>();
-        watchFor.add("insert info here later...");
-        watchFor.add("insert info here later...");
-        watchFor.add("insert info here later...");
-
-        List<String> contact = new ArrayList<>();
-        contact.add("Contact on call team?");
-
-        List<String>dischargeSummary = new ArrayList<>();
-        dischargeSummary.add("Discharge info");
-        dischargeSummary.add("Discharge info");
-        dischargeSummary.add("Discharge info");
-
-        listHash.put(listDataHeader.get(0),patientinf);
-        listHash.put(listDataHeader.get(1),problemList);
-        listHash.put(listDataHeader.get(2),medicationList);
-        listHash.put(listDataHeader.get(3),appointment);
-        listHash.put(listDataHeader.get(4),watchFor);
-        listHash.put(listDataHeader.get(5),contact);
-        listHash.put(listDataHeader.get(6),dischargeSummary);
     }
 }
+

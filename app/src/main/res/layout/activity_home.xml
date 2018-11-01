@@ -1,231 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
 
-    <ExpandableListView
-        android:id="@+id/lvExp"
-        android:layout_width="315dp"
-        android:layout_height="385dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/background"
-        android:textColor="@color/textColor"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_patient">
-
-    </ExpandableListView>
-
-    <TextView
-        android:id="@+id/text_patient"
-        android:layout_width="164dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="@string/patient_name"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/coda_white"
-        android:layout_width="59dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="@string/white"
-        app:layout_constraintBottom_toBottomOf="@+id/text_patient"
-        app:layout_constraintEnd_toStartOf="@+id/text_patient"
-        app:layout_constraintHorizontal_bias="0.026"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/coda_symbol_white" />
-
-    <Button
-        android:id="@+id/button_search"
-        android:layout_width="183dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/textColor"
-        android:text="@string/search"
-        android:textColor="@color/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-<!--
-    <Button
-        android:id="@+id/button_info"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:gravity="center"
-        android:text="@string/patient_info"
-        android:textColor="#233441"
-        android:textSize="20dp"
-        android:drawableEnd="@drawable/plus_icon"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        <android.support.v7.widget.CardView
+            android:id="@+id/meds_card"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
 
-    <Button
-        android:id="@+id/button_problem"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:drawableEnd="@drawable/plus_icon"
-        android:gravity="center"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
-        android:text="@string/problem_list"
-        android:textAllCaps="false"
-        android:textColor="#233441"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313" />
-    <Button
-        android:id="@+id/textView6"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:gravity="center"
-        android:text="@string/medications"
-        android:textColor="#233441"
-        android:textSize="20dp"
-        android:drawableEnd="@drawable/plus_icon"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
-    <Button
-        android:id="@+id/button_schedule"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:gravity="center"
-        android:text="@string/appointment_schedule"
-        android:textColor="#233441"
-        android:textSize="20dp"
-        android:drawableEnd="@drawable/plus_icon"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
-    <Button
-        android:id="@+id/button_watch"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:gravity="center"
-        android:text="@string/what_to_watch_for"
-        android:textColor="#233441"
-        android:textSize="20dp"
-        android:drawableEnd="@drawable/plus_icon"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614" />
-    <Button
-        android:id="@+id/button_contact"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:gravity="center"
-        android:text="@string/contact_team"
-        android:textColor="#233441"
-        android:textSize="20dp"
-        android:drawableEnd="@drawable/plus_icon"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
-    <Button
-        android:id="@+id/button_summary"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:gravity="center"
-        android:text="@string/discharge_summary"
-        android:textColor="#233441"
-        android:textSize="20dp"
-        android:drawableEnd="@drawable/plus_icon"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/button_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
--->
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:layout_weight="31.667">
 
-</android.support.constraint.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_background_purple"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_medication_black_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Medication"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/light_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Check medications list."
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/problems_card"
+
+
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:layout_weight="31.667">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_background_pink"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_report_problem_black_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Problem List"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/light_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Check your problem list."
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            android:id="@+id/appointment_card"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:layout_weight="31.667">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_background_orange"
+                    android:src="@drawable/ic_appointment_black_24dp"
+                    android:padding="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="Appointment Schedule"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/light_gray"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Check upcoming appointments"
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/watch_card"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:layout_weight="31.667">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_background_blue"
+                    android:src="@drawable/ic_watchfor_black_24dp"
+                    android:padding="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="What to watch for"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/light_gray"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Symptoms to watch for."
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/call_card"
+
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:layout_weight="31.667">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_background_yellow"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_call_black_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Contact On-Call Team"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/light_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Call the emergency team."
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/summary_card"
+
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:layout_weight="31.667">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_background_green"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_subject_black_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Discharge Summary"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/light_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Check the summary of your visit."
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
