@@ -230,8 +230,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
             android:id="@+id/call_card"
