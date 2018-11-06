@@ -7,8 +7,7 @@
     android:background="@color/background"
     tools:context=".HomeActivity"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:gravity="center">
+>
 
     <include
         android:id="@+id/toolbar"
@@ -20,7 +19,8 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/meds_card"
@@ -36,7 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <ImageView
                     android:layout_width="64dp"
@@ -86,7 +87,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <ImageView
                     android:layout_width="64dp"
@@ -127,7 +129,9 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
         <android.support.v7.widget.CardView
             android:id="@+id/appointment_card"
             android:foreground="?android:attr/selectableItemBackground"
@@ -186,7 +190,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:padding="10dp">
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
@@ -225,7 +230,8 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/call_card"
