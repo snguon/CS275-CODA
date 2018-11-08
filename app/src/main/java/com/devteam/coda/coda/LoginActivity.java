@@ -53,7 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             counter--;
 
-            info.setText("No of attempts remaining: " + String.valueOf(counter));
+            info.setText("No. of attempts remaining: " + String.valueOf(counter));
+
 
             if (counter == 0) {
                 bLogin.setEnabled(false);
