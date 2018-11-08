@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Medication"
+                    android:text="@string/medications"
                     android:textStyle="bold" />
 
                 <View
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Check medications list."
+                    android:text="@string/med_description"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Problem List"
+                    android:text="@string/problem_list"
                     android:textStyle="bold" />
 
                 <View
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Check your problem list."
+                    android:text="@string/prob_description"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Appointment Schedule"
+                    android:text="@string/appointment_schedule"
                     android:textStyle="bold" />
 
                 <View
@@ -173,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Check upcoming appointments"
+                    android:text="@string/appt_desc"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -208,7 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="What to watch for"
+                    android:text="@string/what_to_watch_for"
                     android:textStyle="bold" />
 
                 <View
@@ -222,7 +222,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Symptoms to watch for."
+                    android:text="@string/watch_desc"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -267,7 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Contact On-Call Team"
+                    android:text="@string/contact_team"
                     android:textStyle="bold" />
 
                 <View
@@ -281,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Call the emergency team."
+                    android:text="@string/contact_desc"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -314,7 +314,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Discharge Summary"
+                    android:text="@string/discharge_summary"
                     android:textStyle="bold" />
 
                 <View
@@ -328,7 +328,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Summary of your visit."
+                    android:text="@string/discharge_desc"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
