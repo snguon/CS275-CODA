@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static EditText username;
     private EditText password;
-    private Button bLogin;
+    private CardView bLogin;
     private TextView info;
     private int counter = 5;
 
@@ -33,7 +34,8 @@ public class LoginActivity extends AppCompatActivity {
 
         username = (EditText)findViewById(R.id.editUsername);
         password = (EditText)findViewById(R.id.editPassword);
-        bLogin = (Button)findViewById(R.id.login_button);
+        //bLogin = (Button)findViewById(R.id.login_button);
+        bLogin = (CardView) findViewById(R.id.cardView);
         info = (TextView)findViewById(R.id.textInfo);
 
         bLogin.setOnClickListener(new View.OnClickListener() {
