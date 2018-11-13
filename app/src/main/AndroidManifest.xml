@@ -23,7 +23,8 @@
         <activity android:name=".AppointmentActivity" />
         <activity android:name=".WatchActivity" />
         <activity android:name=".CallActivity" />
-        <activity android:name=".SummaryActivity"></activity>
+        <activity android:name=".SummaryActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private CardView bLogin;
     private TextView info;
+    private TextView register;
     private int counter = 5;
 
     public static String getUsername() {
@@ -34,14 +35,22 @@ public class LoginActivity extends AppCompatActivity {
 
         username = (EditText)findViewById(R.id.editUsername);
         password = (EditText)findViewById(R.id.editPassword);
-        //bLogin = (Button)findViewById(R.id.login_button);
-        bLogin = (CardView) findViewById(R.id.cardView);
+        register = (TextView) findViewById(R.id.register);
+        bLogin = (CardView) findViewById(R.id.bLogin);
         info = (TextView)findViewById(R.id.textInfo);
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 validateLogin(username.getText().toString(), password.getText().toString());
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerIntent);
             }
         });
     }
