@@ -6,11 +6,17 @@
     <string name="search">Search</string>
     <string name="patient_info">Patient Information</string>
     <string name="problem_list">Problem List</string>
+    <string name="prob_description">Check your problem list.</string>
     <string name="medications">Medications</string>
+    <string name="med_description">Check medications list.</string>
     <string name="appointment_schedule">Appointment Schedule</string>
+    <string name="appt_desc">Check upcoming appointments.</string>
     <string name="what_to_watch_for">What to Watch For</string>
+    <string name="watch_desc">Symptoms to watch for.</string>
     <string name="contact_team">Contact On-Call Team</string>
+    <string name="contact_desc">Call the emergency team.</string>
     <string name="discharge_summary">Discharge Summary</string>
+    <string name="discharge_desc">Summary of your visit.</string>
     <string name="title_activity_login">Sign in</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
