@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +20,7 @@ public class CallActivity extends AppCompatActivity {
     private EditText myActionEditText;
 
     private Toolbar toolbar;
-    private Button phoneButton;
+    private CardView phoneButton;
 
 
     @Override
@@ -29,7 +30,7 @@ public class CallActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        phoneButton = (Button)findViewById(R.id.phoneButton);
+        phoneButton = (CardView)findViewById(R.id.bCall);
 
         phoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
