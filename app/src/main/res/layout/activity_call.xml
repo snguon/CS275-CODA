@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CallActivity"
-    android:background="@drawable/gradient">
+    tools:context=".CallActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -13,10 +14,20 @@
         />
 
     <TextView
+        android:id="@+id/callText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Call Activity"
         android:layout_gravity="center"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:layout_above="@+id/phoneButton" />
+
+    <Button
+        android:id="@+id/phoneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/callText"
+        android:text="Call"
+        android:layout_gravity="center" />
 
 </LinearLayout>
