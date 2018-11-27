@@ -25,7 +25,8 @@ include "lib/constants.php";
 
     print "<!-- require Database.php -->";
 
-    require_once(BIN_PATH . '/Database.php');
+    include "lib/constants.php";
+    require_once(LIB_PATH . '/Database.php');
 
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //
