@@ -1,20 +1,25 @@
 package com.devteam.coda.coda;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AppointmentActivity extends AppCompatActivity {
 
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
-
     private Toolbar toolbar;
+
+    CalendarView calendarView;
+    TextView myCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,18 @@ public class AppointmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_appointment);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        calendarView = (CalendarView) findViewById(R.id.calendarView);
+        myCalendar = (TextView) findViewById(R.id.myCalendar);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view,
+                                            int year, int month, int dayOfMonth) {
+                String date = (month + 1) + "/" + dayOfMonth + "/" + year;
+                myCalendar.setText(date);
+            }
+        });
     }
 
     @Override

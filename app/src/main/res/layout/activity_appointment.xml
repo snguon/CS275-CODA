@@ -15,7 +15,7 @@
         />
 
     <TextView
-        android:id="@+id/myCalandar"
+        android:id="@+id/myCalendar"
         android:layout_gravity="center"
         android:text="Appointments Ahead"
         android:layout_width="wrap_content"
@@ -35,6 +35,7 @@
         android:background="@drawable/bg_calandar">
 
         <CalendarView
+            android:id="@+id/calendarView"
             android:layout_width="wrap_content"
             android:layout_height="320dp"
             android:textColorPrimary="@color/colorPrimaryDark"
