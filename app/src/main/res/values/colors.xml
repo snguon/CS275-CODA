@@ -6,7 +6,7 @@
     <color name="background">#64A7DE</color>
     <color name="white">#ffffff</color>
     <color name="textColor">#233441</color>
-
+    <color name="blue_accent">#FF3E67A1</color>
     <color name="light_gray">#ededed</color>
     <color name="purple">#7c4dff</color>
     <color name="yellow">#fff700</color>

@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:id="@+id/textView"
         android:textSize="18sp"
-        android:textColor="#FF3E67A1"
+        android:textColor="@color/blue_accent"
         android:text="Login"
         android:layout_centerInParent="true"/>
 
