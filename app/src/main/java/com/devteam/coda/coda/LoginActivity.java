@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private CardView bLogin;
     private TextView info;
     private TextView register;
+
     private int counter = 5;
 
     public static String getUsername() {
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         bLogin = (CardView) findViewById(R.id.bLogin);
         info = (TextView)findViewById(R.id.textInfo);
 
+
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,11 +60,14 @@ public class LoginActivity extends AppCompatActivity {
     public void validateLogin(String userName, String userPassword) {
         if ((userName.equals("test")) && (userPassword.equals("1234"))) {
             Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+
             startActivity(homeIntent);
         } else {
             counter--;
 
             info.setText("No. of attempts remaining: " + String.valueOf(counter));
+
+
 
 
             if (counter == 0) {

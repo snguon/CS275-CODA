@@ -20,6 +20,16 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/coda_symbol_white" />
+
+        <TextView
+            android:id="@+id/usrnameTool"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
+            android:text="user"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
     </LinearLayout>
 
 

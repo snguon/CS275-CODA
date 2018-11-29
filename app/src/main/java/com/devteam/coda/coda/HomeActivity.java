@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private CardView medCard,problemCard, apptCard, watchCard, callCard, summaryCard;
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
-
+    private TextView usrName;
     private Toolbar toolbar;
 
 
@@ -36,6 +36,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        usrName = findViewById(R.id.usrnameTool);
+        usrName.setText(LoginActivity.getUsername());
 
         //define the different cards
         medCard = (CardView) findViewById(R.id.meds_card);
@@ -51,6 +54,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         watchCard.setOnClickListener(this);
         callCard.setOnClickListener(this);
         summaryCard.setOnClickListener(this);
+
+
     }
 
     @Override

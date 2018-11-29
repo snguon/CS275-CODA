@@ -34,8 +34,8 @@ public class AppointmentActivity extends AppCompatActivity {
     private EditText myActionEditText;
     private Toolbar toolbar;
 
-    CalendarView calendarView;
-    TextView myCalendar;
+    private TextView myCalendar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,45 +43,97 @@ public class AppointmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_appointment);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        myCalendar = (TextView)findViewById(R.id.myCalendar);
 
 
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
 
-        //set event
-        Event ev1 = new Event(Color.RED,1543575074000L, "Random Date");
+        //December 01 2018
+        final Event ev1 = new Event(Color.RED,1543575074000L, "December 1");
         compactCalendar.addEvent(ev1);
 
-        // Add event 1 on Sun, 07 Jun 2015 18:20:51 GMT
-        Event ev2 = new Event(Color.GREEN, 1433701251000L, "Some extra data that I want to store.");
+
+        //November 30 2018
+        final Event ev2 = new Event(Color.GREEN, 1543661474000L, "This is tomorrow");
         compactCalendar.addEvent(ev2);
 
-        // Added event 2 GMT: Sun, 07 Jun 2015 19:10:51 GMT
-        Event ev3 = new Event(Color.GREEN, 1433704251000L);
+
+        //Jan 16 2019
+        final Event ev3 = new Event(Color.GREEN, 1547635874000L, "My Birthday");
         compactCalendar.addEvent(ev3);
 
-        List<Event> events = compactCalendar.getEvents(1543575074000L); // can also take a Date object
+        //List<Event> events = compactCalendar.getEvents(1543575074000L); // can also take a Date object
 
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
+                String evDataString = "";
                 Context context = getApplicationContext();
 
                 List<Event> events = compactCalendar.getEvents(dateClicked);
 
-                if(dateClicked.toString().compareTo("Fri Nov 30 09:00:00 AST 2018") == 0){
-                    Toast.makeText(context, "Random Date", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(context, "No events on this date", Toast.LENGTH_SHORT).show();
+                System.out.println(dateClicked.toString());
+                if(dateClicked.toString().compareTo("Fri Nov 30 00:00:00 EST 2018") == 0){
 
+                    evDataString = String.valueOf(ev2.getData());
                 }
+
+                if(dateClicked.toString().compareTo("Sat Dec 01 00:00:00 EST 2018") == 0){
+
+                    evDataString = String.valueOf(ev1.getData());
+                }
+
+                if(dateClicked.toString().compareTo("Wed Jan 16 00:00:00 EST 2019") == 0){
+
+                    evDataString = String.valueOf(ev3.getData());
+                }
+
+                Toast.makeText(context, "Events occurring: " + evDataString, Toast.LENGTH_LONG).show();
+
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                //myCalendar.setText(dateFormatMonth.format(firstDayOfNewMonth));
+                System.out.println(firstDayOfNewMonth);
+                if(firstDayOfNewMonth.toString().contains("Jan")){
+                    myCalendar.setText("January");
+                }
+                if(firstDayOfNewMonth.toString().contains("Feb")){
+                    myCalendar.setText("February");
+                }
+                if(firstDayOfNewMonth.toString().contains("Mar")){
+                    myCalendar.setText("March");
+                }
+                if(firstDayOfNewMonth.toString().contains("Apr")){
+                    myCalendar.setText("April");
+                }
+                if(firstDayOfNewMonth.toString().contains("May")){
+                    myCalendar.setText("May");
+                }
+                if(firstDayOfNewMonth.toString().contains("Jun")){
+                    myCalendar.setText("June");
+                }
+                if(firstDayOfNewMonth.toString().contains("Jul")){
+                    myCalendar.setText("July");
+                }
+                if(firstDayOfNewMonth.toString().contains("Aug")){
+                    myCalendar.setText("August");
+                }
+                if(firstDayOfNewMonth.toString().contains("Sep")){
+                    myCalendar.setText("September");
+                }
+                if(firstDayOfNewMonth.toString().contains("Oct")){
+                    myCalendar.setText("October");
+                }
+                if(firstDayOfNewMonth.toString().contains("Nov")){
+                    myCalendar.setText("November");
+                }
+                if(firstDayOfNewMonth.toString().contains("Dec")){
+                    myCalendar.setText("December");
+                }
+
 
             }
         });
