@@ -48,7 +48,7 @@ $_SESSION["login"] = false;
 		</nav>
 		<!-- Navbar -->
 		<!-- Full Page Intro -->
-		<div class="view" style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+		<div class="view" style="background-image: linear-gradient(to right, #789cca, #5374a7, #3e67a1); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 			<!-- Mask & flexbox options-->
 			<div class="mask rgba-gradient d-flex justify-content-center align-items-center">
 				<!-- Content -->
