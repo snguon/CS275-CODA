@@ -1,6 +1,10 @@
 package com.devteam.coda.coda;
 
+import android.app.usage.UsageEvents;
+import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,7 +16,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 public class AppointmentActivity extends AppCompatActivity {
+
+
+    CompactCalendarView compactCalendar;
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
 
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
@@ -28,17 +44,48 @@ public class AppointmentActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        calendarView = (CalendarView) findViewById(R.id.calendarView);
-        myCalendar = (TextView) findViewById(R.id.myCalendar);
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        compactCalendar.setUseThreeLetterAbbreviation(true);
+
+        //set event
+        Event ev1 = new Event(Color.RED,1543575074000L, "Random Date");
+        compactCalendar.addEvent(ev1);
+
+        // Add event 1 on Sun, 07 Jun 2015 18:20:51 GMT
+        Event ev2 = new Event(Color.GREEN, 1433701251000L, "Some extra data that I want to store.");
+        compactCalendar.addEvent(ev2);
+
+        // Added event 2 GMT: Sun, 07 Jun 2015 19:10:51 GMT
+        Event ev3 = new Event(Color.GREEN, 1433704251000L);
+        compactCalendar.addEvent(ev3);
+
+        List<Event> events = compactCalendar.getEvents(1543575074000L); // can also take a Date object
+
+
+        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView view,
-                                            int year, int month, int dayOfMonth) {
-                String date = (month + 1) + "/" + dayOfMonth + "/" + year;
-                myCalendar.setText(date);
+            public void onDayClick(Date dateClicked) {
+                Context context = getApplicationContext();
+
+                List<Event> events = compactCalendar.getEvents(dateClicked);
+
+                if(dateClicked.toString().compareTo("Fri Nov 30 09:00:00 AST 2018") == 0){
+                    Toast.makeText(context, "Random Date", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context, "No events on this date", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                //myCalendar.setText(dateFormatMonth.format(firstDayOfNewMonth));
+
             }
         });
+
     }
 
     @Override

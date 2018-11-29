@@ -27,31 +27,47 @@
         android:layout_marginTop="40dp"
         />
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/bg_calandar">
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/compactcalendar_view"
+        android:layout_width="fill_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_height="250dp"
+        app:compactCalendarTargetHeight="250dp"
+        app:compactCalendarTextSize="12sp"
+        app:compactCalendarBackgroundColor="#fcfbfb"
+        app:compactCalendarTextColor="@color/blue_accent"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/blue"
+        app:compactCalendarCurrentDayBackgroundColor="@color/purple"
+        app:compactCalendarMultiEventIndicatorColor="@color/blue_accent"
+        />
 
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
-            android:layout_height="320dp"
-            android:textColorPrimary="@color/colorPrimaryDark"
-            >
-        </CalendarView>
+    <!--<LinearLayout-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:background="@drawable/bg_calandar">-->
 
-    </LinearLayout>
-    <Button
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/bg_btn"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="Set Appointment"
-        android:textColor="@color/blue_accent" />
+        <!--<CalendarView-->
+            <!--android:id="@+id/calendarView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="320dp"-->
+            <!--android:textColorPrimary="@color/colorPrimaryDark"-->
+            <!--&gt;-->
+        <!--</CalendarView>-->
+
+    <!--</LinearLayout>-->
+    <!--<Button-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="34dp"-->
+        <!--android:background="@drawable/bg_btn"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:text="Set Appointment"-->
+        <!--android:textColor="@color/blue_accent" />-->
 
 </LinearLayout>
