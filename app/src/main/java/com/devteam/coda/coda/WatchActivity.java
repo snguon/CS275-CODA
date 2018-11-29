@@ -7,12 +7,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class WatchActivity extends AppCompatActivity {
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
-
+    private TextView usrName;
     private Toolbar toolbar;
 
 
@@ -21,6 +22,8 @@ public class WatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watch);
         setSupportActionBar(toolbar);
+        usrName = findViewById(R.id.usrnameTool);
+        usrName.setText(LoginActivity.getUsername());
     }
 
     @Override

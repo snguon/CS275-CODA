@@ -7,13 +7,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MedicationActivity extends AppCompatActivity {
 
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
-
+    private TextView usrName;
     private Toolbar toolbar;
 
     @Override
@@ -22,6 +23,8 @@ public class MedicationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medication);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        usrName = findViewById(R.id.usrnameTool);
+        usrName.setText(LoginActivity.getUsername());
     }
 
     @Override

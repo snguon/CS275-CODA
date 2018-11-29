@@ -33,7 +33,7 @@ public class AppointmentActivity extends AppCompatActivity {
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
     private Toolbar toolbar;
-
+    private TextView usrName;
     private TextView myCalendar;
 
 
@@ -45,6 +45,8 @@ public class AppointmentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         myCalendar = (TextView)findViewById(R.id.myCalendar);
 
+        usrName = findViewById(R.id.usrnameTool);
+        usrName.setText(LoginActivity.getUsername());
 
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
