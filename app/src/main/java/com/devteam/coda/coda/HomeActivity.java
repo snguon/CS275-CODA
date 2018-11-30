@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private CardView medCard,problemCard, apptCard, watchCard, callCard, summaryCard;
@@ -39,6 +40,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
+
 
         //define the different cards
         medCard = (CardView) findViewById(R.id.meds_card);
