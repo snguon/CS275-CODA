@@ -93,7 +93,7 @@ public class PdfScrapper extends AppCompatActivity {
             document.close();
 
         }
-        public PdfScrapper throws IOException(){}
+        // public PdfScrapper throws IOException(){}
 
 
 
