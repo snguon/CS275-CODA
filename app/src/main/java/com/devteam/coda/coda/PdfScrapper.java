@@ -1,7 +1,12 @@
 package com.devteam.coda.coda;
-import android.support.v7.app.AppCompatActivity;
 
-import com.tom_roush.pdfbox.util.PDFBoxResourceLoader;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.TextView;
+
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -14,13 +19,21 @@ import java.util.List;
 import java.util.Map;
 
 public class PdfScrapper extends AppCompatActivity {
+    private TextView usrName;
+    private Toolbar toolbar;
+
+    private TextView pdfInfo;
+
+    public String pdfFiller;
+
     //Loading an existing document
    // PDFBoxResourceLoader.init(getApplicationContext());
 
-        File file = new File("/Users/ishanverma 1/Desktop/discharge_instructions.pdf");
+
+        File file = new File("C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf");
         //PDDocument document;
          //       = PDDocument..load(file);
-         String src = "/Users/ishanverma 1/Desktop/discharge_instructions.pdf";
+         String src = "C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf";
         PDDocument document;
 
     {
@@ -57,11 +70,13 @@ public class PdfScrapper extends AppCompatActivity {
         List<String> test = Arrays.asList(text.split("\n"));
         String heading="";
         String texts="";
-        public static void main(String args[]) throws IOException{
-            File file = new File("/Users/ishanverma 1/Desktop/discharge_instructions.pdf");
+        public static void getpdfString() throws IOException{
+
+            File file = new File("C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf");
             //PDDocument document;
             //       = PDDocument..load(file);
-            String src = "/Users/ishanverma 1/Desktop/discharge_instructions.pdf";
+            //String src = "/Users/ishanverma 1/Desktop/discharge_instructions.pdf";
+            String src = "C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf";
             PDDocument document = PDDocument.load(new File(src));
             //Instantiate PDFTextStripper class
             PDFTextStripper pdfStripper = new PDFTextStripper();
@@ -87,14 +102,20 @@ public class PdfScrapper extends AppCompatActivity {
             }
             for(Map.Entry entry : map.entrySet())
             {
-                System.out.println(entry.getKey() +":::"+ entry.getValue());
+                //System.out.println(entry.getKey() +":::"+ entry.getValue());
+                String pdfFiller = (entry.getKey() +":::"+ entry.getValue());
+                System.out.println(pdfFiller);
+                //return pdfFiller;
             }
+
+
             System.out.println("--------------------");
             document.close();
 
         }
-        // public PdfScrapper throws IOException(){}
-
-
+    //public static String getpdfString(){return pdfFiller;}
 
 }
+
+
+

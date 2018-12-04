@@ -10,11 +10,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class SummaryActivity extends AppCompatActivity {
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
     private TextView usrName;
     private Toolbar toolbar;
+    private TextView PdfText;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,10 @@ public class SummaryActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
+
+        PdfText = findViewById(R.id.PdfText);
+        PdfText.setText("Fuck off");
+        //PdfText.setText("Testing");
     }
 
     @Override
