@@ -18,7 +18,7 @@
         android:id="@+id/buttonStripText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Strip Text From PDF"
+        android:text="Retreive PDF info from online..."
         android:layout_marginTop="10dp"
         android:onClick="stripText" />
 

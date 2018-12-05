@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +59,8 @@ public class PdfScrapper extends AppCompatActivity {
     TextView tv;
     TextView usrName;
     private Toolbar toolbar;
+    Button pdfScrape;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,13 +109,17 @@ public class PdfScrapper extends AppCompatActivity {
         root = android.os.Environment.getExternalStorageDirectory();
         assetManager = getAssets();
         tv = (TextView) findViewById(R.id.statusTextView);
+        pdfScrape = (Button) findViewById(R.id.buttonStripText);
     }
 
     /**
      * Strips the text from a PDF and displays the text on screen
      */
+
     public void stripText(View v) {
 
+        pdfScrape.setVisibility(View.GONE);
+        tv.setText("Please wait while the pdf is being downloaded and converted...");
         PdfScrapper.BackgroundWorker backgroundWorker= new BackgroundWorker(this);
         backgroundWorker.execute();
 /*        String parsedText = null;
