@@ -163,9 +163,11 @@ public class PdfScrapper extends AppCompatActivity {
                 // document = PDDocument.load(assetManager.open("discharge_instructions.pdf"));
 
                 PDFTextStripper pdfStripper = new PDFTextStripper();
-                pdfStripper.setStartPage(0);
-                pdfStripper.setEndPage(10);
+//                pdfStripper.setStartPage(-2);
+//                pdfStripper.setEndPage(12);
                 parsedText = pdfStripper.getText(document);
+
+                System.out.println(parsedText);
 
                 runOnUiThread(new Runnable() {
 
