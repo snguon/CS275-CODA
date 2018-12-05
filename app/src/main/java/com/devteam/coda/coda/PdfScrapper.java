@@ -1,17 +1,13 @@
 package com.devteam.coda.coda;
-
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.TextView;
-
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.*;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -19,99 +15,61 @@ import java.util.List;
 import java.util.Map;
 
 public class PdfScrapper extends AppCompatActivity {
-    private TextView usrName;
-    private Toolbar toolbar;
+        public static String pdfFiller;
 
-    private TextView pdfInfo;
-
-    public String pdfFiller;
-
-    //Loading an existing document
-   // PDFBoxResourceLoader.init(getApplicationContext());
+        public static String pdftotext() throws IOException {
 
 
-        File file = new File("C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf");
-        //PDDocument document;
-         //       = PDDocument..load(file);
-         String src = "C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf";
-        PDDocument document;
+            try {
+                URL url = new URL("http://snguon.w3.uvm.edu/cs275/discharge_instructions.pdf");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                InputStream is = connection.getInputStream();
 
-    {
-        try {
-            document = PDDocument.load(new File(src));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+                // read from your scanner
 
-    //Instantiate PDFTextStripper class
-        PDFTextStripper pdfStripper;
 
-    {
-        try {
-            pdfStripper = new PDFTextStripper();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+                PDDocument document = PDDocument.load(is);
+                //Instantiate PDFTextStripper class
+                PDFTextStripper pdfStripper = new PDFTextStripper();
 
-    //Retrieving text from PDF document
-        String text;
+                //Retrieving text from PDF document
+                String text = pdfStripper.getText(document);
 
-    {
-        try {
-            text = pdfStripper.getText(document);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        List<String> test = Arrays.asList(text.split("\n"));
-        String heading="";
-        String texts="";
-        public static void getpdfString() throws IOException{
-
-            File file = new File("C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf");
-            //PDDocument document;
-            //       = PDDocument..load(file);
-            //String src = "/Users/ishanverma 1/Desktop/discharge_instructions.pdf";
-            String src = "C:\\Users\\djenz\\Desktop\\Github\\CS275-CODA\\app\\src\\main\\java\\com\\devteam\\coda\\coda\\discharge_instructions.pdf";
-            PDDocument document = PDDocument.load(new File(src));
-            //Instantiate PDFTextStripper class
-            PDFTextStripper pdfStripper = new PDFTextStripper();
-
-            //Retrieving text from PDF document
-            String text = pdfStripper.getText(document);
-
-            LinkedHashMap<String, String> map = new LinkedHashMap<>();
-            List<String> test = Arrays.asList(text.split("\n"));
-            String heading="";
-            String texts="";
-            for (int i =0; i< test.size();i++) {
-                if (test.get(i).contains(":")|| test.get(i).contains("?")){
-                    if(heading!=""){
-                        map.put(heading, texts);
+                LinkedHashMap<String, String> map = new LinkedHashMap<>();
+                List<String> test = Arrays.asList(text.split("\n"));
+                String heading = "";
+                String texts = "";
+                for (int i = 0; i < test.size(); i++) {
+                    if (test.get(i).contains(":") || test.get(i).contains("?")) {
+                        if (heading != "") {
+                            map.put(heading, texts);
+                        }
+                        heading = test.get(i);
+                        texts = "";
+                    } else {
+                        texts = texts + "\n" + test.get(i);
                     }
-                    heading=test.get(i);
-                    texts="";
-                }else{
-                    texts=texts+"\n"+test.get(i);
+
+                }
+                for (Map.Entry entry : map.entrySet()) {
+                    //System.out.println(entry.getKey() +":::"+ entry.getValue());
+                    pdfFiller = (entry.getKey() + ":::" + entry.getValue());
+                    System.out.println(pdfFiller);
+                    //return pdfFiller;
                 }
 
+
+                System.out.println("--------------------");
+                document.close();
+                return pdfFiller;
+
+            } catch (IOException ex) {
+                // there was some connection problem, or the file did not exist on the server,
+                // or your URL was not in the right format.
+                // think about what to do now, and put it here.
+                ex.printStackTrace(); // for now, simply output it.
             }
-            for(Map.Entry entry : map.entrySet())
-            {
-                //System.out.println(entry.getKey() +":::"+ entry.getValue());
-                String pdfFiller = (entry.getKey() +":::"+ entry.getValue());
-                System.out.println(pdfFiller);
-                //return pdfFiller;
-            }
-
-
-            System.out.println("--------------------");
-            document.close();
-
+            return "Error nothing read in...";
         }
     //public static String getpdfString(){return pdfFiller;}
 
