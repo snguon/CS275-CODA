@@ -18,6 +18,7 @@ public class SummaryActivity extends AppCompatActivity {
     private TextView usrName;
     private Toolbar toolbar;
     private TextView PdfText;
+    PdfScrapper s = new PdfScrapper();
 
 
 
@@ -30,11 +31,7 @@ public class SummaryActivity extends AppCompatActivity {
         usrName.setText(LoginActivity.getUsername());
 
         PdfText = findViewById(R.id.PdfText);
-        try {
-            PdfText.setText(PdfScrapper.pdftotext());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        PdfText.setText(s.pdftotext());
         //PdfText.setText("Testing");
     }
 

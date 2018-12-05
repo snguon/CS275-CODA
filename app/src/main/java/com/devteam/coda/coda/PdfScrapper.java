@@ -1,4 +1,5 @@
 package com.devteam.coda.coda;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -17,14 +18,25 @@ import java.util.Map;
 public class PdfScrapper extends AppCompatActivity {
         public static String pdfFiller;
 
-        public static String pdftotext() throws IOException {
+        public String pdftotext() {
+            PdfScrapper.BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+            backgroundWorker.execute(pdfFiller);
+            return pdfFiller;
+        }
 
+    private static class BackgroundWorker extends AsyncTask<String, Void, String> {
 
+        public BackgroundWorker(PdfScrapper pdfScrapper) {
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
             try {
                 URL url = new URL("http://snguon.w3.uvm.edu/cs275/discharge_instructions.pdf");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream is = connection.getInputStream();
-
+                String pdfFiller = params[0];
                 // read from your scanner
 
 
@@ -73,6 +85,7 @@ public class PdfScrapper extends AppCompatActivity {
             }
             return "Error nothing read in...";
         }
+    }
     //public static String getpdfString(){return pdfFiller;}
 
 }
