@@ -21,6 +21,7 @@ public class WatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watch);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());

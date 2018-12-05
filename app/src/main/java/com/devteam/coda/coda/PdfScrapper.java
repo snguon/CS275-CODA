@@ -1,94 +1,139 @@
 package com.devteam.coda.coda;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
+import android.app.Activity;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.tom_roush.pdfbox.pdmodel.PDDocument;
+import com.tom_roush.pdfbox.pdmodel.PDDocumentCatalog;
+import com.tom_roush.pdfbox.pdmodel.PDPage;
+import com.tom_roush.pdfbox.pdmodel.PDPageContentStream;
+import com.tom_roush.pdfbox.pdmodel.encryption.AccessPermission;
+import com.tom_roush.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
+import com.tom_roush.pdfbox.pdmodel.font.PDFont;
+import com.tom_roush.pdfbox.pdmodel.font.PDType1Font;
+import com.tom_roush.pdfbox.pdmodel.graphics.image.JPEGFactory;
+import com.tom_roush.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import com.tom_roush.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import com.tom_roush.pdfbox.pdmodel.interactive.form.PDCheckbox;
+import com.tom_roush.pdfbox.pdmodel.interactive.form.PDComboBox;
+import com.tom_roush.pdfbox.pdmodel.interactive.form.PDField;
+import com.tom_roush.pdfbox.pdmodel.interactive.form.PDListBox;
+import com.tom_roush.pdfbox.pdmodel.interactive.form.PDRadioButton;
+import com.tom_roush.pdfbox.pdmodel.interactive.form.PDTextField;
+import com.tom_roush.pdfbox.rendering.PDFRenderer;
+import com.tom_roush.pdfbox.text.PDFTextStripper;
+import com.tom_roush.pdfbox.util.PDFBoxResourceLoader;
+
+import org.spongycastle.jce.provider.BouncyCastleProvider;
+
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.*;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
+import java.security.Security;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class PdfScrapper extends AppCompatActivity {
-        public static String pdfFiller;
+    File root;
+    AssetManager assetManager;
+    Bitmap pageImage;
+    TextView tv;
+    TextView usrName;
+    private Toolbar toolbar;
 
-        public String pdftotext() {
-            PdfScrapper.BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            backgroundWorker.execute(pdfFiller);
-            return pdfFiller;
-        }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pdfscrapper);
 
-    private static class BackgroundWorker extends AsyncTask<String, Void, String> {
-
-        public BackgroundWorker(PdfScrapper pdfScrapper) {
-
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                URL url = new URL("http://snguon.w3.uvm.edu/cs275/discharge_instructions.pdf");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                InputStream is = connection.getInputStream();
-                String pdfFiller = params[0];
-                // read from your scanner
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
-                PDDocument document = PDDocument.load(is);
-                //Instantiate PDFTextStripper class
-                PDFTextStripper pdfStripper = new PDFTextStripper();
-
-                //Retrieving text from PDF document
-                String text = pdfStripper.getText(document);
-
-                LinkedHashMap<String, String> map = new LinkedHashMap<>();
-                List<String> test = Arrays.asList(text.split("\n"));
-                String heading = "";
-                String texts = "";
-                for (int i = 0; i < test.size(); i++) {
-                    if (test.get(i).contains(":") || test.get(i).contains("?")) {
-                        if (heading != "") {
-                            map.put(heading, texts);
-                        }
-                        heading = test.get(i);
-                        texts = "";
-                    } else {
-                        texts = texts + "\n" + test.get(i);
-                    }
-
-                }
-                for (Map.Entry entry : map.entrySet()) {
-                    //System.out.println(entry.getKey() +":::"+ entry.getValue());
-                    pdfFiller = (entry.getKey() + ":::" + entry.getValue());
-                    System.out.println(pdfFiller);
-                    //return pdfFiller;
-                }
-
-
-                System.out.println("--------------------");
-                document.close();
-                is.close();
-                connection.disconnect();
-                return pdfFiller;
-
-            } catch (IOException ex) {
-                // there was some connection problem, or the file did not exist on the server,
-                // or your URL was not in the right format.
-                // think about what to do now, and put it here.
-                ex.printStackTrace(); // for now, simply output it.
-            }
-            return "Error nothing read in...";
-        }
+        usrName = findViewById(R.id.usrnameTool);
+        usrName.setText(LoginActivity.getUsername());
     }
-    //public static String getpdfString(){return pdfFiller;}
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setup();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int res_id = item.getItemId();
+        if(res_id == R.id.action_settings){
+            Toast.makeText(getApplicationContext(),
+                    "You selected settings option", Toast.LENGTH_LONG).show();
+        }
+        return true;
+    }
+
+    /**
+     * Initializes variables used for convenience
+     */
+    private void setup() {
+        // Enable Android-style asset loading (highly recommended)
+        PDFBoxResourceLoader.init(getApplicationContext());
+        // Find the root of the external storage.
+        root = android.os.Environment.getExternalStorageDirectory();
+        assetManager = getAssets();
+        tv = (TextView) findViewById(R.id.statusTextView);
+    }
+
+    /**
+     * Strips the text from a PDF and displays the text on screen
+     */
+    public void stripText(View v) {
+        String parsedText = null;
+        PDDocument document = null;
+        try {
+            document = PDDocument.load(assetManager.open("discharge_instructions.pdf"));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            PDFTextStripper pdfStripper = new PDFTextStripper();
+            pdfStripper.setStartPage(0);
+            pdfStripper.setEndPage(1);
+            parsedText = pdfStripper.getText(document);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (document != null) document.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        tv.setText(parsedText);
+    }
 
 }
-
-
-

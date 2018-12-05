@@ -27,6 +27,7 @@
         <activity android:name=".CallActivity" />
         <activity android:name=".SummaryActivity" />
         <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".PdfScrapper"></activity>
     </application>
 
 </manifest>

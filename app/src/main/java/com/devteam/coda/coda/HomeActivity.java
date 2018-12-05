@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.appointment_card: i = new Intent(this,AppointmentActivity.class);startActivity(i); break;
             case R.id.watch_card: i = new Intent(this,WatchActivity.class);startActivity(i); break;
             case R.id.call_card: i = new Intent(this,CallActivity.class);startActivity(i); break;
-            case R.id.summary_card: i = new Intent(this,SummaryActivity.class);startActivity(i); break;
+            case R.id.summary_card: i = new Intent(this,PdfScrapper.class);startActivity(i); break;
             default:break;
         }
 
