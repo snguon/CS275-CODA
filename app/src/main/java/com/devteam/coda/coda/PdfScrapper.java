@@ -1,6 +1,7 @@
 package com.devteam.coda.coda;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -111,7 +112,10 @@ public class PdfScrapper extends AppCompatActivity {
      * Strips the text from a PDF and displays the text on screen
      */
     public void stripText(View v) {
-        String parsedText = null;
+
+        PdfScrapper.BackgroundWorker backgroundWorker= new BackgroundWorker(this);
+        backgroundWorker.execute();
+/*        String parsedText = null;
         PDDocument document = null;
         try {
             document = PDDocument.load(assetManager.open("discharge_instructions.pdf"));
@@ -133,7 +137,75 @@ public class PdfScrapper extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        tv.setText(parsedText);
+        System.out.println(parsedText);
+        tv.setText(parsedText);*/
     }
 
+    private class BackgroundWorker extends AsyncTask<String, Void, String> {
+        Context context;
+
+        public BackgroundWorker(Context ctx) {
+            context = ctx;
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            final String parsedText;
+            PDDocument document = null;
+            String pdf_url = "http://snguon.w3.uvm.edu/cs275/discharge_instructions.pdf";
+            try {
+                URL url = new URL(pdf_url);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setDoInput(true);
+                InputStream is = connection.getInputStream();
+                document = PDDocument.load(is);
+                // document = PDDocument.load(assetManager.open("discharge_instructions.pdf"));
+
+                PDFTextStripper pdfStripper = new PDFTextStripper();
+                pdfStripper.setStartPage(0);
+                pdfStripper.setEndPage(10);
+                parsedText = pdfStripper.getText(document);
+
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        tv.setText(parsedText);
+                    }
+                });
+
+                document.close();
+                is.close();
+                connection.disconnect();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+/*            finally {
+                try {
+                    if (document != null) document.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }*/
+
+/*            try {
+                PDFTextStripper pdfStripper = new PDFTextStripper();
+                pdfStripper.setStartPage(0);
+                pdfStripper.setEndPage(1);
+                parsedText = pdfStripper.getText(document);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (document != null) document.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            tv.setText(parsedText);
+            return null;*/
+        }
+    }
 }
