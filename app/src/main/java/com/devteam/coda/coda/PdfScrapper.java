@@ -61,6 +61,8 @@ public class PdfScrapper extends AppCompatActivity {
 
                 System.out.println("--------------------");
                 document.close();
+                is.close();
+                connection.disconnect();
                 return pdfFiller;
 
             } catch (IOException ex) {
