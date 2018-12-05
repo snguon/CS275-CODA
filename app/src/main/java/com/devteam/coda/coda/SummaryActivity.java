@@ -30,7 +30,11 @@ public class SummaryActivity extends AppCompatActivity {
         usrName.setText(LoginActivity.getUsername());
 
         PdfText = findViewById(R.id.PdfText);
-        PdfText.setText("Fuck off");
+        try {
+            PdfText.setText(PdfScrapper.pdftotext());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //PdfText.setText("Testing");
     }
 
