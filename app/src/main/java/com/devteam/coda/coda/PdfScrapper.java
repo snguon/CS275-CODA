@@ -50,6 +50,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.Security;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PdfScrapper extends AppCompatActivity {
@@ -57,10 +58,18 @@ public class PdfScrapper extends AppCompatActivity {
     AssetManager assetManager;
     Bitmap pageImage;
     TextView tv;
+    //
+    //TextView text_problems;
+
+    //
     TextView usrName;
     private Toolbar toolbar;
     Button pdfScrape;
 
+    static String get_problems="";
+    static String get_meds="";
+    static String get_apointments="";
+    static String get_symptoms="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +118,7 @@ public class PdfScrapper extends AppCompatActivity {
         root = android.os.Environment.getExternalStorageDirectory();
         assetManager = getAssets();
         tv = (TextView) findViewById(R.id.statusTextView);
+        //text_problems = (TextView) findViewById(R.id.myProblems);
         pdfScrape = (Button) findViewById(R.id.buttonStripText);
     }
 
@@ -157,6 +167,7 @@ public class PdfScrapper extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
+
             final String parsedText;
             PDDocument document = null;
             String pdf_url = "http://snguon.w3.uvm.edu/cs275/discharge_instructions.pdf";
@@ -176,11 +187,82 @@ public class PdfScrapper extends AppCompatActivity {
 
                 System.out.println(parsedText);
 
+                List<String> test = Arrays.asList(parsedText.split("\n"));
+
+                boolean b=false;
+                for (String t : test)
+                {
+                    if (t.contains("Appointments")){
+                        b=true;
+                    }
+                    if (t.contains("What can I expect from having a ureteral stent?")){
+                        //System.out.println(t);
+                        b=false;
+                    }
+                    if(b){
+                        get_apointments=get_apointments+"\n"+t;
+                    }
+
+                }
+
+
+                b=false;
+                for (String t : test)
+                {
+                    if (t.contains("What can I expect from having a ureteral stent?")){
+                        b=true;
+                    }
+                    if (t.contains("How long will the stent remain in my body?")){
+                        //System.out.println(t);
+                        b=false;
+                    }
+                    if(b){
+                        get_problems=get_problems+"\n"+t;
+                    }
+
+                }
+
+                b=false;
+                for (String t : test)
+                {
+                    if (t.contains("Symptoms to Call Your Doctor About")){
+                        b=true;
+                    }
+                    if (t.contains("Appointments")){
+                        //System.out.println(t);
+                        b=false;
+                    }
+                    if(b){
+                        get_symptoms=get_symptoms+"\n"+t;
+                    }
+
+                }
+
+
+                b=false;
+                int c=0;
+                for (String t : test)
+                {
+                    if (t.contains("PAIN CONTROL")){
+                        b=true;
+                    }
+                    if (t.contains("BATHING")){
+                        //System.out.println(t);
+                        b=false;
+                        c=1;
+
+                    }
+                    if(b&&c==0){
+                        get_meds=get_meds+"\n"+t;
+                    }
+
+                }
                 runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
                         tv.setText(parsedText);
+                      //  text_problems.setText(temp_text);
                     }
                 });
 

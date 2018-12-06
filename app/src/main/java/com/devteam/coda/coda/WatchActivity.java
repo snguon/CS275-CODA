@@ -15,7 +15,8 @@ public class WatchActivity extends AppCompatActivity {
     private EditText myActionEditText;
     private TextView usrName;
     private Toolbar toolbar;
-
+    private TextView symptoms;
+    private String text_symptoms=PdfScrapper.get_symptoms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class WatchActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
+        symptoms = findViewById(R.id.mySymptoms);
+        symptoms.setText(text_symptoms);
     }
 
     @Override

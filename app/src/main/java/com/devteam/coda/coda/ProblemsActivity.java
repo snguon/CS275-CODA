@@ -14,7 +14,9 @@ public class ProblemsActivity extends AppCompatActivity {
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
     private TextView usrName;
+    private TextView problem;
     private Toolbar toolbar;
+    private String text_problems=PdfScrapper.get_problems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class ProblemsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
+        problem = findViewById(R.id.myProblems);
+        problem.setText(text_problems);
     }
 
     @Override

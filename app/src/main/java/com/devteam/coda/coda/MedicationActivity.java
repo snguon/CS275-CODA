@@ -16,6 +16,8 @@ public class MedicationActivity extends AppCompatActivity {
     private EditText myActionEditText;
     private TextView usrName;
     private Toolbar toolbar;
+    private TextView med;
+    private String text_meds=PdfScrapper.get_meds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class MedicationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
+        med = findViewById(R.id.myMeds);
+        med.setText(text_meds);
     }
 
     @Override
