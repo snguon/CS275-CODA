@@ -31,10 +31,6 @@
         app:compactCalendarCurrentDayBackgroundColor="@color/green"
         app:compactCalendarMultiEventIndicatorColor="@color/blue_accent"
         />
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
 
     <ScrollView
         android:id="@+id/SCROLLER_ID"
