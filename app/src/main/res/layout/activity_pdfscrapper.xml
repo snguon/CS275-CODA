@@ -18,7 +18,7 @@
         android:id="@+id/buttonStripText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Retreive PDF info from online..."
+        android:text="Retrieve PDF info from online..."
         android:layout_marginTop="10dp"
         android:onClick="stripText" />
 
@@ -34,6 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="Text from the pdf..."
             android:textAlignment="center"
             android:textColor="@color/white"
