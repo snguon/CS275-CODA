@@ -4,6 +4,9 @@ body{
 
 background-image: linear gradient(to right, #789cca, #5374a7, #3e67a1);
 
+main{
+    background: #5374a7;
+}
 
 .mt-5 {
     margin-top: 4rem!important;
