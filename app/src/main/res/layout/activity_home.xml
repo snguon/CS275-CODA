@@ -5,24 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
+        layout="@layout/toolbar" />
 
     <LinearLayout
-
+        android:id="@+id/topcards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:clipToPadding="false"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_margin="5dp">
+        android:padding="10dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/meds_card"
@@ -121,14 +120,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/midcards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:clipToPadding="false"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_margin="5dp">
+        android:padding="10dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/appointment_card"
@@ -227,15 +227,15 @@
     </LinearLayout>
 
     <LinearLayout
-
+        android:id="@+id/bottomcards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:clipToPadding="false"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_margin="5dp">
+        android:padding="10dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/call_card"
