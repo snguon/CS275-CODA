@@ -23,6 +23,7 @@
         android:layout_above="@id/editEmail"
         android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
         android:layout_marginTop="3dp"
         app:srcCompat="@drawable/coda_text" />
 
@@ -30,9 +31,9 @@
         android:id="@+id/editUsername"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_above="@+id/editEmail"
+        android:layout_above="@id/editEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="20dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
@@ -49,7 +50,7 @@
         android:layout_alignLeft="@+id/editUsername"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="20dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
@@ -66,7 +67,7 @@
         android:layout_alignBottom="@+id/bRegister"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginBottom="102dp"
+        android:layout_marginBottom="85dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_pass"
         android:ems="10"
@@ -80,6 +81,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/bRegister"
         android:layout_above="@+id/register"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="31dp"
         android:onClick="validateRegister"
         app:cardElevation="10dp"
@@ -111,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-31dp"
+        android:layout_marginBottom="-50dp"
         android:text="" />
 
 
