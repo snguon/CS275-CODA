@@ -19,7 +19,7 @@ public class CallActivity extends AppCompatActivity {
 
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
-
+    private String phone_number=PdfScrapper.get_phone_number;
     private Toolbar toolbar;
     private CardView phoneButton;
 
@@ -38,7 +38,7 @@ public class CallActivity extends AppCompatActivity {
         phoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri number = Uri.parse("tel:");
+                Uri number = Uri.parse("tel:"+phone_number);
                 Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
                 startActivity(callIntent);
             }

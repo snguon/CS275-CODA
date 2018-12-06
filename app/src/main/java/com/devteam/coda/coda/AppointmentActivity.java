@@ -35,6 +35,8 @@ public class AppointmentActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView usrName;
     private TextView myCalendar;
+    private TextView appoint;
+    private String text_appoint=PdfScrapper.get_apointments;
 
 
     @Override
@@ -47,6 +49,8 @@ public class AppointmentActivity extends AppCompatActivity {
 
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
+        appoint = findViewById(R.id.myCalendar);
+        appoint.setText(text_appoint);
 
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);

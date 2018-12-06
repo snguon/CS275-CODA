@@ -52,6 +52,8 @@ import java.security.Security;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PdfScrapper extends AppCompatActivity {
     File root;
@@ -70,6 +72,7 @@ public class PdfScrapper extends AppCompatActivity {
     static String get_meds="";
     static String get_apointments="";
     static String get_symptoms="";
+    static String get_phone_number="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -256,6 +259,12 @@ public class PdfScrapper extends AppCompatActivity {
                         get_meds=get_meds+"\n"+t;
                     }
 
+                }
+
+                Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
+                Matcher matcher = pattern.matcher(parsedText);
+                if (matcher.find()) {
+                    get_phone_number=matcher.group(0);
                 }
                 runOnUiThread(new Runnable() {
 
