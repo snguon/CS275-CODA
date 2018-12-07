@@ -51,17 +51,19 @@
         android:layout_height="fill_parent"
         android:scrollbars="vertical"
         android:fillViewport="true">
-    <TextView
-        android:id="@+id/myAppointments"
-        android:layout_gravity="center"
-        android:text="Retrieve Data from Summarry first"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="23sp"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        />
+
+        <TextView
+            android:id="@+id/myAppointments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="Retrieve Data from Summarry first"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
     </ScrollView>
     <!--<LinearLayout-->
         <!--android:layout_width="300dp"-->
