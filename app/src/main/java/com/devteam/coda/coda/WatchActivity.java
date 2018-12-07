@@ -27,6 +27,10 @@ public class WatchActivity extends AppCompatActivity {
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
         symptoms = findViewById(R.id.mySymptoms);
+        if (text_symptoms.equals("")){
+            text_symptoms = "Retrieve Data from Summary first";
+        }
+
         symptoms.setText(text_symptoms);
     }
 

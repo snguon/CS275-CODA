@@ -161,6 +161,8 @@ public class PdfScrapper extends AppCompatActivity {
         tv.setText(parsedText);*/
     }
 
+    boolean button_clicked = false;
+
     private class BackgroundWorker extends AsyncTask<String, Void, String> {
         Context context;
 
@@ -191,6 +193,7 @@ public class PdfScrapper extends AppCompatActivity {
                 System.out.println(parsedText);
 
                 List<String> test = Arrays.asList(parsedText.split("\n"));
+
 
                 boolean b=false;
                 for (String t : test)
@@ -282,30 +285,7 @@ public class PdfScrapper extends AppCompatActivity {
                 e.printStackTrace();
             }
             return null;
-/*            finally {
-                try {
-                    if (document != null) document.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }*/
 
-/*            try {
-                PDFTextStripper pdfStripper = new PDFTextStripper();
-                pdfStripper.setStartPage(0);
-                pdfStripper.setEndPage(1);
-                parsedText = pdfStripper.getText(document);
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (document != null) document.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            tv.setText(parsedText);
-            return null;*/
         }
     }
 }

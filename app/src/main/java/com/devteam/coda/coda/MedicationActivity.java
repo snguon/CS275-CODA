@@ -28,6 +28,9 @@ public class MedicationActivity extends AppCompatActivity {
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
         med = findViewById(R.id.myMeds);
+        if (text_meds.equals("")){
+            text_meds = "Retrieve Data from Summary first";
+        }
         med.setText(text_meds);
     }
 

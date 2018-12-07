@@ -27,6 +27,10 @@ public class ProblemsActivity extends AppCompatActivity {
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
         problem = findViewById(R.id.myProblems);
+        if (text_problems.equals("")){
+            text_problems = "Retrieve Data from Summary first";
+        }
+
         problem.setText(text_problems);
     }
 

@@ -29,14 +29,54 @@ public class AppointmentActivity extends AppCompatActivity {
 
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
-
     private MenuItem myActionMenuItem;
     private EditText myActionEditText;
     private Toolbar toolbar;
     private TextView usrName;
     private TextView myCalendar;
     private TextView appoint;
+    private Date myMonth = new Date();
     private String text_appoint=PdfScrapper.get_apointments;
+
+    private String getMonth(Date firstDayOfNewMonth){
+        if(firstDayOfNewMonth.toString().contains("Jan")){
+            return "January";
+        }
+        if(firstDayOfNewMonth.toString().contains("Feb")){
+            return "February";
+        }
+        if(firstDayOfNewMonth.toString().contains("Mar")){
+            return "March";
+        }
+        if(firstDayOfNewMonth.toString().contains("Apr")){
+            return "April";
+        }
+        if(firstDayOfNewMonth.toString().contains("May")){
+            return "May";
+        }
+        if(firstDayOfNewMonth.toString().contains("Jun")){
+            return "June";
+        }
+        if(firstDayOfNewMonth.toString().contains("Jul")){
+            return "July";
+        }
+        if(firstDayOfNewMonth.toString().contains("Aug")){
+            return "August";
+        }
+        if(firstDayOfNewMonth.toString().contains("Sep")){
+            return "September";
+        }
+        if(firstDayOfNewMonth.toString().contains("Oct")){
+            return "October";
+        }
+        if(firstDayOfNewMonth.toString().contains("Nov")){
+            return "November";
+        }
+        if(firstDayOfNewMonth.toString().contains("Dec")){
+           return "December";
+        }
+        return "Month not found??";
+    }
 
 
     @Override
@@ -45,15 +85,20 @@ public class AppointmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_appointment);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        myCalendar = (TextView)findViewById(R.id.myCalendar);
-
+        myCalendar = findViewById(R.id.myCalendar);
+        myCalendar.setText(getMonth(myMonth));
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
-        appoint = findViewById(R.id.myCalendar);
+        appoint = findViewById(R.id.myAppointments);
+        if (text_appoint.equals("")){
+            text_appoint = "Retrieve Data from Summary first";
+        }
         appoint.setText(text_appoint);
 
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
+
+
 
         //December 01 2018
         final Event ev1 = new Event(Color.RED,1543575074000L, "December 1");
@@ -103,42 +148,7 @@ public class AppointmentActivity extends AppCompatActivity {
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 System.out.println(firstDayOfNewMonth);
-                if(firstDayOfNewMonth.toString().contains("Jan")){
-                    myCalendar.setText("January");
-                }
-                if(firstDayOfNewMonth.toString().contains("Feb")){
-                    myCalendar.setText("February");
-                }
-                if(firstDayOfNewMonth.toString().contains("Mar")){
-                    myCalendar.setText("March");
-                }
-                if(firstDayOfNewMonth.toString().contains("Apr")){
-                    myCalendar.setText("April");
-                }
-                if(firstDayOfNewMonth.toString().contains("May")){
-                    myCalendar.setText("May");
-                }
-                if(firstDayOfNewMonth.toString().contains("Jun")){
-                    myCalendar.setText("June");
-                }
-                if(firstDayOfNewMonth.toString().contains("Jul")){
-                    myCalendar.setText("July");
-                }
-                if(firstDayOfNewMonth.toString().contains("Aug")){
-                    myCalendar.setText("August");
-                }
-                if(firstDayOfNewMonth.toString().contains("Sep")){
-                    myCalendar.setText("September");
-                }
-                if(firstDayOfNewMonth.toString().contains("Oct")){
-                    myCalendar.setText("October");
-                }
-                if(firstDayOfNewMonth.toString().contains("Nov")){
-                    myCalendar.setText("November");
-                }
-                if(firstDayOfNewMonth.toString().contains("Dec")){
-                    myCalendar.setText("December");
-                }
+                myCalendar.setText(getMonth(firstDayOfNewMonth));
 
 
             }
