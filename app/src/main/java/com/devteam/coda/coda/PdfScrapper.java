@@ -9,10 +9,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -73,6 +75,15 @@ public class PdfScrapper extends AppCompatActivity {
     static String get_apointments="";
     static String get_symptoms="";
     static String get_phone_number="";
+    static String get_pdf="";
+    private String parsedText="";
+    private String check_if_retreived = "0";
+
+    private static final String KEY_PARSEDTXT = "parsedText_key";
+    private static final String KEY_CHCK_REC = "check_key";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,15 +93,35 @@ public class PdfScrapper extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         usrName = findViewById(R.id.usrnameTool);
         usrName.setText(LoginActivity.getUsername());
+
+        tv = (TextView) findViewById(R.id.statusTextView);
+        //text_problems = (TextView) findViewById(R.id.myProblems);
+        pdfScrape = (Button) findViewById(R.id.buttonStripText);
+
+        if (get_pdf.equals("")){
+            tv.setText("Retrieve Data from Summary first");
+        }else {
+            ViewGroup layout = (ViewGroup) pdfScrape.getParent();
+            layout.removeView(pdfScrape);
+            tv.setText(get_pdf);
+        }
     }
+
+
 
     @Override
     protected void onStart() {
         super.onStart();
         setup();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putString(KEY_PARSEDTXT, tv.getText().toString());
+        savedInstanceState.putString(KEY_CHCK_REC, check_if_retreived);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
@@ -120,16 +151,16 @@ public class PdfScrapper extends AppCompatActivity {
         // Find the root of the external storage.
         root = android.os.Environment.getExternalStorageDirectory();
         assetManager = getAssets();
-        tv = (TextView) findViewById(R.id.statusTextView);
-        //text_problems = (TextView) findViewById(R.id.myProblems);
-        pdfScrape = (Button) findViewById(R.id.buttonStripText);
+
     }
+
 
     /**
      * Strips the text from a PDF and displays the text on screen
      */
 
     public void stripText(View v) {
+
 
         pdfScrape.setVisibility(View.GONE);
         tv.setText("Please wait while the pdf is being downloaded and converted...");
@@ -161,7 +192,7 @@ public class PdfScrapper extends AppCompatActivity {
         tv.setText(parsedText);*/
     }
 
-    boolean button_clicked = false;
+
 
     private class BackgroundWorker extends AsyncTask<String, Void, String> {
         Context context;
@@ -264,6 +295,19 @@ public class PdfScrapper extends AppCompatActivity {
 
                 }
 
+                b=false;
+                for (String t : test)
+                {
+                    if (t.contains("")) {
+                        b = true;
+                    }
+                    if(b){
+                        get_pdf=get_pdf+"\n"+t;
+                    }
+
+
+                }
+
                 Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
                 Matcher matcher = pattern.matcher(parsedText);
                 if (matcher.find()) {
@@ -277,7 +321,7 @@ public class PdfScrapper extends AppCompatActivity {
                       //  text_problems.setText(temp_text);
                     }
                 });
-
+                check_if_retreived = "1";
                 document.close();
                 is.close();
                 connection.disconnect();
