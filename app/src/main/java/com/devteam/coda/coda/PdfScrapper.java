@@ -1,57 +1,30 @@
 package com.devteam.coda.coda;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
-import com.tom_roush.pdfbox.pdmodel.PDDocumentCatalog;
-import com.tom_roush.pdfbox.pdmodel.PDPage;
-import com.tom_roush.pdfbox.pdmodel.PDPageContentStream;
-import com.tom_roush.pdfbox.pdmodel.encryption.AccessPermission;
-import com.tom_roush.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
-import com.tom_roush.pdfbox.pdmodel.font.PDFont;
-import com.tom_roush.pdfbox.pdmodel.font.PDType1Font;
-import com.tom_roush.pdfbox.pdmodel.graphics.image.JPEGFactory;
-import com.tom_roush.pdfbox.pdmodel.graphics.image.LosslessFactory;
-import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
-import com.tom_roush.pdfbox.pdmodel.interactive.form.PDAcroForm;
-import com.tom_roush.pdfbox.pdmodel.interactive.form.PDCheckbox;
-import com.tom_roush.pdfbox.pdmodel.interactive.form.PDComboBox;
-import com.tom_roush.pdfbox.pdmodel.interactive.form.PDField;
-import com.tom_roush.pdfbox.pdmodel.interactive.form.PDListBox;
-import com.tom_roush.pdfbox.pdmodel.interactive.form.PDRadioButton;
-import com.tom_roush.pdfbox.pdmodel.interactive.form.PDTextField;
-import com.tom_roush.pdfbox.rendering.PDFRenderer;
 import com.tom_roush.pdfbox.text.PDFTextStripper;
 import com.tom_roush.pdfbox.util.PDFBoxResourceLoader;
 
-import org.spongycastle.jce.provider.BouncyCastleProvider;
-
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.Security;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -166,30 +139,6 @@ public class PdfScrapper extends AppCompatActivity {
         tv.setText("Please wait while the pdf is being downloaded and converted...");
         PdfScrapper.BackgroundWorker backgroundWorker= new BackgroundWorker(this);
         backgroundWorker.execute();
-/*        String parsedText = null;
-        PDDocument document = null;
-        try {
-            document = PDDocument.load(assetManager.open("discharge_instructions.pdf"));
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            PDFTextStripper pdfStripper = new PDFTextStripper();
-            pdfStripper.setStartPage(0);
-            pdfStripper.setEndPage(1);
-            parsedText = pdfStripper.getText(document);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (document != null) document.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println(parsedText);
-        tv.setText(parsedText);*/
     }
 
 
@@ -214,11 +163,8 @@ public class PdfScrapper extends AppCompatActivity {
                 connection.setDoInput(true);
                 InputStream is = connection.getInputStream();
                 document = PDDocument.load(is);
-                // document = PDDocument.load(assetManager.open("discharge_instructions.pdf"));
 
                 PDFTextStripper pdfStripper = new PDFTextStripper();
-//                pdfStripper.setStartPage(-2);
-//                pdfStripper.setEndPage(12);
                 parsedText = pdfStripper.getText(document);
 
                 System.out.println(parsedText);
@@ -233,7 +179,6 @@ public class PdfScrapper extends AppCompatActivity {
                         b=true;
                     }
                     if (t.contains("What can I expect from having a ureteral stent?")){
-                        //System.out.println(t);
                         b=false;
                     }
                     if(b){
@@ -250,7 +195,6 @@ public class PdfScrapper extends AppCompatActivity {
                         b=true;
                     }
                     if (t.contains("How long will the stent remain in my body?")){
-                        //System.out.println(t);
                         b=false;
                     }
                     if(b){
@@ -266,7 +210,6 @@ public class PdfScrapper extends AppCompatActivity {
                         b=true;
                     }
                     if (t.contains("Appointments")){
-                        //System.out.println(t);
                         b=false;
                     }
                     if(b){
@@ -284,7 +227,6 @@ public class PdfScrapper extends AppCompatActivity {
                         b=true;
                     }
                     if (t.contains("BATHING")){
-                        //System.out.println(t);
                         b=false;
                         c=1;
 
@@ -318,7 +260,6 @@ public class PdfScrapper extends AppCompatActivity {
                     @Override
                     public void run() {
                         tv.setText(parsedText);
-                      //  text_problems.setText(temp_text);
                     }
                 });
                 check_if_retreived = "1";

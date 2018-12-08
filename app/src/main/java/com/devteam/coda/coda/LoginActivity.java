@@ -37,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public static String getUsername() {
         return username.getText().toString();
-//        return email.getText().toString();
     }
 
     @Override
@@ -62,13 +61,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void validateLogin(View view) {
-        // String sEmail = email.getText().toString();
         String sUsername = username.getText().toString();
         String sPassword = password.getText().toString();
         String type = "login";
 
         LoginActivity.BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        // backgroundWorker.execute(type, sEmail, sPassword);
         backgroundWorker.execute(type, sUsername, sPassword);
     }
 

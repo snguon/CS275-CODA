@@ -21,18 +21,17 @@
         android:scrollbars="vertical"
         android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/PdfText"
-        android:layout_gravity="center"
-        android:text="Text from the pdf..."
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="23sp"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        />
+        <TextView
+            android:id="@+id/PdfText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Text from the pdf..."
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
     </ScrollView>
 
 
