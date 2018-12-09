@@ -29,7 +29,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="15dp"
-            android:gravity="fill"
+            android:gravity="start"
             android:text="Text from the pdf..."
             android:textAlignment="textStart"
             android:textColor="@color/white"
