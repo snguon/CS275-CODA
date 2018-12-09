@@ -154,6 +154,7 @@ public class PdfScrapper extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             final String parsedText;
+            String pText;
             PDDocument document = null;
             String pdf_url = "http://snguon.w3.uvm.edu/cs275/discharge_instructions.pdf";
             try {
@@ -165,7 +166,12 @@ public class PdfScrapper extends AppCompatActivity {
                 document = PDDocument.load(is);
 
                 PDFTextStripper pdfStripper = new PDFTextStripper();
-                parsedText = pdfStripper.getText(document);
+                // if sentence doesn't end at the the end of the line, append the read string together
+                parsedText = pdfStripper.getText(document).replaceAll("\n", "")
+                        .replaceAll(":\\s{2}", ":\n").replaceAll("\\?\\s{2}", "?\n")
+                        .replaceAll("\\s{3}", "\n\n").replaceAll(".\n\n\\u2022", ".\n\u2022")
+                        .replaceAll("\\s{1}\u2022", "\u2022").replaceAll("\\u2022", "\n\u2022")
+                        .replaceAll(":\u2022\\s{1}", ":\n");
 
                 System.out.println(parsedText);
 

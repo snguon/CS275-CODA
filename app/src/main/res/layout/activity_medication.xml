@@ -28,10 +28,11 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="40dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="40dp"
             android:gravity="center"
             android:text="Medication Activity"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/white"
-            android:textSize="23sp" />
+            android:textSize="19sp" />
     </ScrollView>
 </LinearLayout>
