@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pdflayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PdfScrapper"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    >
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
+
+    <Button
+        android:id="@+id/buttonStripText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retrieve PDF info from online..."
+        android:layout_marginTop="10dp"
+        android:onClick="stripText" />
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/statusTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:text="Text from the pdf..."
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="19sp" />
+    </ScrollView>
+
+
+
+</LinearLayout>
+

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.devteam.coda.coda">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/coda_symbol"
@@ -16,14 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MedicationActivity" />
-        <activity android:name=".ProblemsActivity" />
-        <activity android:name=".AppointmentActivity" />
-        <activity android:name=".WatchActivity" />
-        <activity android:name=".CallActivity" />
-        <activity android:name=".SummaryActivity"></activity>
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait" />
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MedicationActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ProblemsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AppointmentActivity" android:screenOrientation="portrait" />
+        <activity android:name=".WatchActivity" android:screenOrientation="portrait" />
+        <activity android:name=".CallActivity" android:screenOrientation="portrait" />
+        <activity android:name=".SummaryActivity" android:screenOrientation="portrait" />
+        <activity android:name=".RegisterActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".PdfScrapper" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

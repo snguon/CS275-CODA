@@ -1,8 +1,8 @@
 <?php
 
-define("DATABASE_NAME", strtoupper(get_current_user()) . '_cs275_CODA');
+define("DATABASE_NAME", 'NRLAWREN_cs275_CODA');
 
-define("ADMIN_EMAIL", get_current_user() . "@uvm.edu");
+define("ADMIN_EMAIL", "nrlawren@uvm.edu");
 
 define("LINE_BREAK", "\n");
 

@@ -33,6 +33,19 @@ include "top.php";
           </div>
           <div class="text-center mt-4">
             <button class="btn btn-indigo" name = "buttonSignUp" id="buttonSignUp">Sign up</button>
+            <div class="text-center mt-4">
+             <hr class="hr-light mb-3 mt-4">
+             <div class="inline-ul text-center d-flex justify-content-center">
+              <a class="p-2 m-2 tw-ic">
+                <i class="fa fa-twitter white-text"></i>
+              </a>
+              <a class="p-2 m-2 li-ic">
+                <i class="fa fa-linkedin white-text"> </i>
+              </a>
+              <a class="p-2 m-2 ins-ic">
+                <i class="fa fa-instagram white-text"> </i>
+              </a>
+            </div>
             <hr class="hr-light mb-3 mt-4">
             <div class="inline-ul text-center d-flex justify-content-center">
               <?php if (isset($_POST['buttonSignUp'])){?>
